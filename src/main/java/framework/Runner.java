@@ -11,7 +11,7 @@ public class Runner {
     boolean SECURE;
 
     public enum CloudServerName {
-        NAVOT, QA, MIRRON, PUBLIC, EYAl, QA_Not_Secured, MY_N_S, ARIEL_WIN, ARIEL_MAC, YEHUDA
+        NAVOT, QA, MIRRON, PUBLIC, EYAl, QA_Not_Secured, MY_N_S, ARIEL_WIN, ARIEL_MAC, YEHUDA, RELEASE_CLOUD, MASTER_CLOUD, QA_SINGLEPORT,
     }
 
     public void updateCloudDetails() {
@@ -53,16 +53,23 @@ public class Runner {
                 break;
             case QA:
                 HOST = "qacloud.experitest.com";
-                PORT = "443";
-                USER = "zekra";
-                PASS = "Zekra1234";
+                PORT = "80";
+                USER = "ariel";
+                PASS = "Experitest2012";
                 SECURE = false;
                 break;
             case QA_Not_Secured:
-                HOST = "192.168.2.135";
+                HOST = "qacloud.experitest.com";
                 PORT = "80";
-                USER = "zekra";
-                PASS = "Zekra1234";
+                USER = "ariel";
+                PASS = "Experitest2012";
+                SECURE = false;
+                break;
+            case QA_SINGLEPORT:
+                HOST = "qacloud.experitest.com";
+                PORT = "5555";
+                USER = "ariel";
+                PASS = "Experitest2012";
                 SECURE = false;
                 break;
             case MIRRON:
@@ -86,7 +93,20 @@ public class Runner {
                 PASS = "Experitest2012";
                 SECURE = false;
                 break;
-
+            case RELEASE_CLOUD:
+                HOST = "192.168.2.114";
+                PORT = "80";
+                USER = "ariel";
+                PASS = "Experitest2012";
+                SECURE = false;
+                break;
+            case MASTER_CLOUD:
+                HOST = "192.168.4.63";
+                PORT = "80";
+                USER = "ariel";
+                PASS = "Experitest2012";
+                SECURE = false;
+                break;
             default:
                 HOST = "192.168.2.13";
                 PORT = "80";
