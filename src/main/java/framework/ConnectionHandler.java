@@ -2,7 +2,6 @@ package framework;
 
 
 import com.experitest.client.Client;
-import com.experitest.client.GridClient;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -17,8 +16,10 @@ import java.util.concurrent.TimeUnit;
 public class ConnectionHandler extends Runner {
     private int waitForDeviceTimeout = 360 * 1000; // TODO Make variable conformable
 
-    public NewIOSDriver appiumIOS(String appNameID) {
+    public NewIOSDriver appiumIOS(String appNameID, boolean instrument) {
         DesiredCapabilities dc = new DesiredCapabilities();
+        if (instrument)
+            dc.setCapability("instrumentApp", true);
         dc.setCapability("testName", "Appium IOS Test");
         dc.setCapability("username", HOST);
         dc.setCapability("password", PASS);
@@ -39,8 +40,10 @@ public class ConnectionHandler extends Runner {
         return null;
     }
 
-    public NewIOSDriver appiumIOS(String appNameID, String UDID) {
+    public NewIOSDriver appiumIOS(String appNameID, String UDID, boolean instrument) {
         DesiredCapabilities dc = new DesiredCapabilities();
+        if (instrument)
+            dc.setCapability("instrumentApp", true);
         dc.setCapability("testName", "Appium IOS Test");
         dc.setCapability("username", HOST);
         dc.setCapability("password", PASS);
@@ -61,8 +64,10 @@ public class ConnectionHandler extends Runner {
         return null;
     }
 
-    public NewIOSDriver appiumIOSAPP(String path) {
+    public NewIOSDriver appiumIOSAPP(String path, boolean instrument) {
         DesiredCapabilities dc = new DesiredCapabilities();
+        if (instrument)
+            dc.setCapability("instrumentApp", true);
         dc.setCapability("testName", "Appium Android Test");
         dc.setCapability("username", HOST);
         dc.setCapability("password", PASS);
@@ -83,8 +88,10 @@ public class ConnectionHandler extends Runner {
         return null;
     }
 
-    public NewIOSDriver appiumIOSAudio(String appNameID) {
+    public NewIOSDriver appiumIOSAudio(String appNameID, boolean instrument) {
         DesiredCapabilities dc = new DesiredCapabilities();
+        if (instrument)
+            dc.setCapability("instrumentApp", true);
         dc.setCapability("testName", "Appium IOS Audio Test");
         dc.setCapability("username", HOST);
         dc.setCapability("password", PASS);
@@ -106,8 +113,10 @@ public class ConnectionHandler extends Runner {
         return null;
     }
 
-    public NewAndroidDriver appiumAndroid(String appNameID) {
+    public NewAndroidDriver appiumAndroid(String appNameID, boolean instrument) {
         DesiredCapabilities dc = new DesiredCapabilities();
+        if (instrument)
+            dc.setCapability("instrumentApp", true);
         dc.setCapability("testName", "Appium Android Audio Test");
         dc.setCapability("username", HOST);
         dc.setCapability("password", PASS);
@@ -128,8 +137,10 @@ public class ConnectionHandler extends Runner {
         return null;
     }
 
-    public NewAndroidDriver appiumAndroid(String appNameID, String UDID) {
+    public NewAndroidDriver appiumAndroid(String appNameID, String UDID, boolean instrument) {
         DesiredCapabilities dc = new DesiredCapabilities();
+        if (instrument)
+            dc.setCapability("instrumentApp", true);
         dc.setCapability("testName", "Appium Android Test");
         dc.setCapability("username", HOST);
         dc.setCapability("password", PASS);
@@ -150,8 +161,10 @@ public class ConnectionHandler extends Runner {
         return null;
     }
 
-    public NewAndroidDriver appiumAndroidAudio(String appNameID) {
+    public NewAndroidDriver appiumAndroidAudio(String appNameID, boolean instrument) {
         DesiredCapabilities dc = new DesiredCapabilities();
+        if (instrument)
+            dc.setCapability("instrumentApp", true);
         dc.setCapability("testName", "Appium Android Test");
         dc.setCapability("username", HOST);
         dc.setCapability("password", PASS);
@@ -173,8 +186,11 @@ public class ConnectionHandler extends Runner {
         return null;
     }
 
-    public NewAndroidDriver appiumAndroidAPP(String path) {
+    public NewAndroidDriver appiumAndroidAPP(String path, boolean instrument) {
         DesiredCapabilities dc = new DesiredCapabilities();
+        if (instrument)
+            dc.setCapability("instrumentApp", true);
+
         dc.setCapability("testName", "Appium Android Test");
         dc.setCapability("username", HOST);
         dc.setCapability("password", PASS);
@@ -194,7 +210,6 @@ public class ConnectionHandler extends Runner {
         }
         return null;
     }
-
 
     public NewGridClient gridClientShortConstructor() {
         if (SECURE)

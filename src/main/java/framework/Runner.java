@@ -1,5 +1,10 @@
 package framework;
 
+import Run.MyThread;
+import Tests.EriBankTestLogin;
+import Tests.EriBankTestMakePayment;
+import Tests.InstallTest;
+
 /**
  * Created by khaled.abbas on 9/24/2017.
  */
@@ -9,12 +14,22 @@ public class Runner {
     private CloudServerName cloudName;
     String HOST, PASS, USER, PORT;
     boolean SECURE;
+    protected boolean INSTRUMENT;
+
+    public Runner(){
+        SECURE=false;
+        INSTRUMENT=false;
+        cloudName=CloudServerName.QA;
+        updateCloudDetails();
+    }
+
+
 
     public enum CloudServerName {
         NAVOT, QA, MIRRON, PUBLIC, EYAl, QA_Not_Secured, MY_N_S, ARIEL_WIN, ARIEL_MAC, YEHUDA, RELEASE_CLOUD, MASTER_CLOUD, QA_SINGLEPORT,
     }
 
-    public void updateCloudDetails() {
+    private void updateCloudDetails() {
         switch (cloudName) {
             case NAVOT:
                 HOST = "192.168.2.13";
@@ -53,7 +68,7 @@ public class Runner {
                 break;
             case QA:
                 HOST = "qacloud.experitest.com";
-                PORT = "80";
+                PORT = "5555";
                 USER = "ariel";
                 PASS = "Experitest2012";
                 SECURE = false;
@@ -115,5 +130,20 @@ public class Runner {
                 SECURE = false;
                 break;
         }
+    }
+
+    public static void main( final String[] args ) throws InterruptedException {
+
+        Runner runner=new Runner();
+
+//        new MyThread(EriBankTestLogin.class).start();
+//        Thread.sleep(100);
+//        new MyThread(EriBankTestMakePayment.class).start();
+//        Thread.sleep(100);
+        new MyThread(InstallTest.class).start();
+        Thread.sleep(100);
+        System.out.println("-----------------------Done-----------------------");
+
+
     }
 }
